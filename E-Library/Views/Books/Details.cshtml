@@ -1,0 +1,102 @@
+﻿@model E_Library.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    body {
+        background-image: url(/Images/books.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+<h2 style="text-align:center">تفاصيل الكتاب</h2>
+
+
+    <hr />
+    <div style="text-align:center; background-color:rgba(255, 255, 255, 0.41);text-align:center;margin-left:200px;margin-right:200px;padding:100px">
+        <table style="text-align:right">
+            <tr>
+                <td><img src="~/Images/@Url.Content(@Model.Book_Pic)" width="150" height="200"></td>
+                <td>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayFor(model => model.Book_Name)
+
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayNameFor(model => model.Book_Name)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayFor(model => model.Book_Author)
+
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayNameFor(model => model.Book_Author)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayFor(model => model.Publish_Date)
+
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayNameFor(model => model.Publish_Date)
+
+                        </dd>
+
+                        <dt>
+                            <a href="@Url.Content(@Model.Book_link)">انقر هنا</a>
+
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayNameFor(model => model.Book_link)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayFor(model => model.Book_Details)
+                        </dt>                           
+
+
+                        <dd>
+                            @Html.DisplayNameFor(model => model.Book_Details)
+
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayFor(model => model.Department.Dep_name)
+
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayNameFor(model => model.Department.Dep_name)
+
+                        </dd>
+
+                    </dl>
+                    @* @Html.ActionLink("أعجبني👍", "Like", new { book = Model.Book_Id })*@
+                    <br />
+    <p>
+        @{
+            bool l = Convert.ToBoolean(ViewBag.liked);
+        }
+        @if (l == false)
+        {
+            @Html.ActionLink("أعجبني 👍", "Like", new { id = Model.Book_Id })
+        }
+        else
+        {
+            <button type="button" class="btn btn-link disabled">أعجبني 👍</button>
+        }
+
+        |
+        @Html.ActionLink("العودة إلى القائمة", "view")
+    </p>
+</td>
+</tr>
+</table>
+</div>

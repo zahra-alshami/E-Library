@@ -1,0 +1,52 @@
+﻿@model IEnumerable<E_Library.Models.Book>
+
+@{
+    ViewBag.Title = "view";
+}
+<style>
+    body {padding-top:10%;
+          background-image:url(/Images/view.jpg);
+          background-repeat:no-repeat;
+          background-size:cover;
+          color:#337ab7;
+          text-align:center
+    }
+    table , th,tr,td{direction:rtl;
+               text-align:center
+    }
+    </style>
+<div style="background-color:rgba(255, 255, 255, 0.45)" dir="rtl">
+    <h2>الكتب</h2>
+    <table class="table table-striped" dir="rtl">
+        <tr>
+            <th >
+                @Html.DisplayNameFor(model => model.Book_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book_Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publish_Date)
+            </th>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book_Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publish_Date)
+                </td>
+                <td>
+                    @Html.ActionLink("التفاصيل", "Details", new { id = item.Book_Id })
+
+                </td>
+            </tr>
+        }
+
+        </table>
+    </div>

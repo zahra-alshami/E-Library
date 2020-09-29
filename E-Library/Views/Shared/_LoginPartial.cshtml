@@ -1,0 +1,60 @@
+﻿@{
+
+    int id = 0;
+    string User_Name = "", isAdmin = "";
+    try
+    {
+        id = Int32.Parse(Session["User_Id"].ToString());
+        User_Name = Session["User_Name"].ToString();
+        isAdmin = Session["isAdmin"].ToString();
+    }
+    catch { }
+}
+@if (id != 0 && isAdmin == "True")
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-left" }))
+    {
+        @Html.AntiForgeryToken()
+
+<ul class="nav navbar-nav navbar-left">
+
+
+    <li><a href="@Url.Action("Logout", "Home")">تسجيل الخروج <span class="glyphicon glyphicon-log-out"></span></a></li>
+    <li><a href="@Url.Action("Managment","Home")">الإدارة <span class="glyphicon glyphicon-co"></span></a></li>
+    <li>
+        <a>
+            @User_Name <span class="glyphicon glyphicon-user"></span>أهلاً
+        </a>
+    </li>
+</ul>
+    }
+}
+       else if (id != 0 && isAdmin == "False")
+        {
+            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-left" }))
+            {
+                @Html.AntiForgeryToken()
+
+<ul class="nav navbar-nav navbar-left">
+
+    <li>
+        <a href="@Url.Action("LogOut","Home")">
+            تسجيل الخروج
+            <span class="glyphicon glyphicon-log-out"></span>
+        </a>
+    </li>
+    <li>
+        <a>
+            @User_Name <span class="glyphicon glyphicon-user"></span>أهلاً
+        </a>
+    </li>
+</ul>
+            }
+        }
+        else
+        {
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="@Url.Action("Login","Home")">تسجيل الدخول<span class="glyphicon glyphicon-log-in"></span>
+                    </a></li>
+            </ul>
+        }

@@ -1,0 +1,105 @@
+﻿@model E_Library.Models.Book
+
+@{
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liked</title>
+    <style>
+        body {
+            background-image: url(/Images/view.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        </style>
+</head>
+<body>
+    
+        
+        <hr />
+<div style="background-color:rgba(255, 255, 255, 0.41);text-align:center;margin-left:200px;margin-right:200px">
+<table style="text-align:right"><tr>
+
+    <td><img src="~/Images/@Url.Content(@Model.Book_Pic)" width="150" height="200"></td>
+    <td>
+        <dl dir="rtl" class="dl-horizontal">
+            <dt>
+                @Html.DisplayFor(model => model.Book_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayNameFor(model => model.Book_Name)
+
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Book_Author)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Book_Author)
+            </dd>
+
+            <dt>
+                @Html.DisplayFor(model => model.Publish_Date)
+
+
+            </dt>
+
+            <dd>
+                @Html.DisplayNameFor(model => model.Publish_Date)
+
+            </dd>
+
+            <dt>
+                <a href="@Url.Content(@Model.Book_link)">انقر هنا</a>
+
+            </dt>
+
+            <dd>
+                @Html.DisplayNameFor(model => model.Book_link)
+
+            </dd>
+
+
+
+            <dt>
+                @Html.DisplayFor(model => model.Book_Details)
+
+            </dt>
+            <br />
+            <dd>
+                @Html.DisplayNameFor(model => model.Book_Details)
+
+            </dd>
+
+            <dt>
+                @Html.DisplayFor(model => model.Department.Dep_name)
+            </dt>
+
+            <dd>
+                نوع الكتاب
+
+            </dd>
+
+        </dl>
+        <p>
+            <span style="font-size:large;background-color:aliceblue">كتب أخرى قد تعجبك</span>
+            <ul style="list-style-type: none;">
+                @foreach (var book in ViewBag.suggests)
+                {
+                    <li>@book.Book_Name</li>
+                }
+            </ul>
+            <br />
+            @Html.ActionLink("العودة إلى القائمة", "view")
+        </p>
+    </td>
+</tr></table></div>
+</body>
+</html>

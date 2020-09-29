@@ -1,0 +1,82 @@
+﻿@model IEnumerable<E_Library.Models.Book>
+
+@{
+    ViewBag.Title = "search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        padding-top: 10%;
+        background-image: url(/Images/search_1.PNG);
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #337ab7;
+        text-align: center
+    }
+
+    table, th, tr, td {
+        direction: rtl;
+        text-align: center
+    }
+    a.my-class {
+        color: white
+    }
+
+        a.my-class:active {
+            color: white
+        }
+
+        a.my-class:link {
+            color: white
+        }
+
+        a.my-class:visited {
+            color: white
+        }
+</style>
+<div style="background-color:rgba(65, 125, 176, 0.51)">
+    <h2 style="color:white">نتائج البحث</h2>
+    <table class="table table-striped table-responsive" dir="rtl">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Book_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book_Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publish_Date)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Department.Dep_name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr style="font-size:larger;color:white">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book_Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publish_Date)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Dep_name)
+                </td>
+                <td style="color:white">
+                    @Html.ActionLink("التفاصيل", "Details", new { id = item.Book_Id }, new { @class = "my-class" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

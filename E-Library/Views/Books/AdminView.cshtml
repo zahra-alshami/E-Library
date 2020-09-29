@@ -1,0 +1,80 @@
+﻿@model IEnumerable<E_Library.Models.Book>
+
+@{
+    ViewBag.Title = "AdminView";
+}
+
+<style>
+    body {
+        padding-top: 10%;
+        background-image: url(/Images/books.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #337ab7;
+        text-align: center
+    }
+
+    table, th, tr, td {
+        direction: rtl;
+        text-align: center
+    }
+</style>
+<div style="background-color:rgba(255, 255, 255, 0.45)" dir="rtl">
+    <h1>إدارة الكتب</h1>
+
+    <p>
+        @Html.ActionLink("إضافة كتاب جديد", "Create")
+    </p>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Book_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book_Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publish_Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book_link)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book_Pic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department.Dep_name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book_Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Publish_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book_link)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book_Pic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Dep_name)
+                </td>
+                <td>
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.Book_Id }) |
+                    @Html.ActionLink("حذف", "Delete", new { id = item.Book_Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

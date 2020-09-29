@@ -1,0 +1,31 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Managment</title>
+</head>m
+<body style="background-image:url(/Images/m.jpg);background-repeat:no-repeat;background-size:cover;padding:30px" >
+    <div> 
+        <h1 style="color:white;text-align:center;margin-top:50px;margin-left:50px;margin-right:50px">أهلاً بك في صفحة الإدارة </h1>
+
+    </div>
+    <div style="background-color:rgba(222, 232, 241, 0.47);margin:30px;padding-top:50px;padding-bottom:50px;padding-left:150px">
+        <a href='@Url.Action("ViewUsers", "Users")'>
+            <img src="~/images/users.png" />
+        </a>
+        <a href='@Url.Action("view", "Departments")'>
+            <img src="~/images/dep.png" />
+        </a>&nbsp &nbsp &nbsp &nbsp
+        &nbsp &nbsp &nbsp &nbsp
+        <a href='@Url.Action("AdminView", "Books")'>
+            <img src="~/images/books.gif" width=25% height="25%">
+        </a>
+    </div>
+</body>
+</html>

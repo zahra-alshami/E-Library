@@ -1,0 +1,51 @@
+﻿@model E_Library.Models.Users
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style>
+        .navbar-inverse {
+            background-color: black !important;
+        }    </style>
+    <title>تسجيل الدخول </title>
+</head>
+<body style="background-image:url(/Images/login.jpg);background-repeat:no-repeat;background-size:cover">
+    <div style="margin-top:200px;margin-left:350px;margin-right:500px" dir="rtl">
+        @using (Html.BeginForm("LogIn", "Home", FormMethod.Post))
+        {
+            <div class="form-group">
+                اسم المستخدم
+              
+                    @Html.EditorFor(model => model.User_Name, new { htmlAttributes = new { @class = "form-control " } })
+                </div>
+           
+            <div class="form-group">
+                كلمة المرور<br>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+
+                
+            </div>
+            <br>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" style="background-color:black" value="تسجيل الدخول" class="btn btn-primary btn-lg" />
+                </div>
+            </div>
+
+
+        }
+        <div>
+            <a href="@Url.Action("SignUp","Home")">
+                ليس لديك حساب ؟ اشترك من هنا
+            </a>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<E_Library.Models.Department>
+
+@{
+    ViewBag.Title = "view";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        padding-top: 10%;
+        background-image: url(/Images/Department.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: black;
+        text-align: center;
+        font-family:'Arabic Typesetting';
+        font-size:18px;
+   
+            }
+
+    table, th, tr, td {
+        direction: rtl;
+        text-align: center
+    }
+</style>  
+<div style="margin-left:250px;margin-top:50px;margin-right:250px;background-color:rgba(255, 255, 255, 0.45)" dir="rtl">
+
+    <h2>الأقسام</h2>
+
+    <p>
+        @Html.ActionLink("إنشاء قسم جديد ", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>القسم        </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dep_name)
+                </td>
+                <td>
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.Dep_id }) |
+                    @Html.ActionLink("حذف", "Delete", new { id = item.Dep_id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

@@ -1,0 +1,46 @@
+﻿@model E_Library.Models.Department
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .navbar-inverse {
+        background-color: #d9534f !important;
+    }
+
+    body {
+        background-image: url(/Images/deleteuser.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+<div dir="rtl" style="margin-right:100px;margin-top:50px;background-color:rgba(255, 255, 255, 0.44);padding:50px">
+
+    <h2 style="text-align:center">حذف</h2>
+
+    <h3 dir="rtl">هل أنت متأكد من حذف هذا القسم؟؟</h3>
+    <hr />
+
+    <dl class="dl-horizontal" dir="rtl" style="width:50%">
+        <dt>
+            @Html.DisplayFor(model => model.Dep_name)
+
+        </dt>
+
+        <dd>
+            @Html.DisplayNameFor(model => model.Dep_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div style="text-align:center" class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("العودة إلى القائمة", "view")
+        </div>
+    }
+</div>

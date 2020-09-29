@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<head>
+    <style>
+        body{background-image:url(/Images/index.jpg);
+             background-repeat:no-repeat;
+             background-size:cover
+
+        }
+       div #mydiv{
+           margin-top:200px;
+           margin-right:40%;
+    
+       }
+       h1{margin-left:100px;
+          
+       }
+        .search-form .form-group input.form-control {
+            padding-right: 20px;
+            border: 0 none;
+            background: transparent;
+            box-shadow: none;
+            display: block;
+        }
+
+            .search-form .form-group input.form-control::-webkit-input-placeholder {
+                display: none;
+            }
+
+            .search-form .form-group input.form-control:-moz-placeholder {
+                /* Firefox 18- */
+                display: none;
+            }
+
+            .search-form .form-group input.form-control::-moz-placeholder {
+                /* Firefox 19+ */
+                display: none;
+            }
+
+            .search-form .form-group input.form-control:-ms-input-placeholder {
+                display: none;
+            }
+
+        .search-form .form-group:hover,
+        .search-form .form-group.hover {
+            width: 100%;
+            border-radius: 4px 25px 25px 4px;
+        }
+
+        .search-form .form-group span.form-control-feedback {
+            position: absolute;
+            top: -1px;
+            right: -2px;
+            z-index: 2;
+            display: block;
+            width: 34px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            color: white;
+            left: initial;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+            <form action="@Url.Action("search","Books")" class="search-form">
+                <div class="form-group has-feedback">
+                    <label for="search" class="sr-only">Search</label>
+                    <input type="text" class="form-control" name="txtname" id="search" placeholder="ابحث عن كتاب">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div id="mydiv" dir="rtl">
+        <h1>أهلاً بك في المكتبة الإلكترونية </h1>
+        <a class="btn btn-primary btn-lg" href="@Url.Action("view","Books")">شاهد الكتب من هنا</a>
+    </div>
+</body>

@@ -1,0 +1,85 @@
+﻿@model E_Library.Models.Users
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .navbar-inverse {
+        background-color: #d9534f !important;
+    }
+    body{
+        background-image:url(/Images/deleteuser.jpg);
+        background-size:cover;
+        background-repeat:no-repeat;
+    }
+</style>
+<div style="background-color:rgba(255, 255, 255, 0.52);margin:100px;padding:50px;">
+    <h2 style="text-align:center">الحذف</h2>
+
+    <h3 style="text-align:center">هل حقاً تريد حذف هذا المستخدم؟</h3>
+    <div dir="rtl" style="width:50%;margin-left:150px">
+        <hr style="color:black;" />
+        <dl class="dl-horizontal" dir="rtl">
+            <dt style="text-align:right">
+                @Html.DisplayFor(model => model.User_Id)
+
+            </dt>
+
+            <dd style="text-align:right">
+                @Html.DisplayNameFor(model => model.User_Id)
+
+            </dd>
+
+            <dt>
+                @Html.DisplayFor(model => model.User_Name)
+
+            </dt>
+
+            <dd>
+                @Html.DisplayNameFor(model => model.User_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayFor(model => model.Password)
+
+            </dt>
+
+            <dd>
+                @Html.DisplayNameFor(model => model.Password)
+
+            </dd>
+
+            <dt>
+                @Html.DisplayFor(model => model.Birthdate)
+
+            </dt>
+
+            <dd>
+                @Html.DisplayNameFor(model => model.Birthdate)
+
+            </dd>
+
+            <dt>
+                @Html.DisplayFor(model => model.isAdmin)
+
+            </dt>
+
+            <dd>
+                @Html.DisplayNameFor(model => model.isAdmin)
+
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div style="align-content:center;text-align:center" class="form-actions no-color">
+                <input  type="submit" value="Delete" class="btn btn-danger" /> |
+                @Html.ActionLink("عودة إلى القائمة ", "ViewUsers")
+            </div>
+        }
+    </div>
+</div>

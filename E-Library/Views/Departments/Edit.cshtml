@@ -1,0 +1,45 @@
+﻿@model E_Library.Models.Department
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        background-image: url(/Images/ed.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+<div style="margin:250px;margin-top:100px">
+    <h2 style="text-align:center">تعديل</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr style="border-color:blue" />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Dep_id)
+
+            <div dir="rtl" style="text-align:right" class="form-group">
+                النوع            <div class="col-md-10">
+                    @Html.EditorFor(model => model.Dep_name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Dep_name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div style="text-align:center" class="col-md-offset-2 col-md-10">
+                    <input style="text-align:center" type="submit" value="حفظ" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div style="text-align:center">
+        @Html.ActionLink("العودة إلى القائمة", "view")
+    </div>
+
+</div>

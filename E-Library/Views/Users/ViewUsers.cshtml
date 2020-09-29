@@ -1,0 +1,75 @@
+﻿@model IEnumerable<E_Library.Models.Users>
+
+@{
+    ViewBag.Title = "ViewUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        padding-top: 10%;
+        background-image: url(/Images/Users.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #337ab7;
+        text-align: center
+    }
+
+    table, th, tr, td {
+        direction: rtl;
+        text-align: center
+    }
+</style>
+
+<div style="background-color:rgba(255, 255, 255, 0.44);">
+    <h2>إدارة المستخدمين</h2>
+
+    <p>
+        @Html.ActionLink("إنشاء مستخدم", "Create")
+    </p>
+    <table class="table table-striped" style="text-align:center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birthdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isAdmin)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Birthdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isAdmin)
+                </td>
+                <td>
+                    @Html.ActionLink("تعديل", "Edit", new { id = item.User_Id }) |
+                    @Html.ActionLink("حذف", "Delete", new { id = item.User_Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

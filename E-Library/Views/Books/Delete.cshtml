@@ -1,0 +1,101 @@
+﻿@model E_Library.Models.Book
+
+@{
+    ViewBag.Title = "Delete";
+}
+<style>
+    .navbar-inverse {
+        background-color: #d9534f !important;
+    }
+    body{
+        background-image:url(/Images/deleteuser.jpg);
+         background-size:cover;
+         background-repeat:no-repeat;
+       }
+</style>
+
+<div dir="rtl" style="margin-right:100px;margin-top:50px;background-color:rgba(255, 255, 255, 0.44);padding:50px">
+    <h2>حذف</h2>
+
+    <h3>هل حقاً تريد حذف هذا الكتاب ؟</h3>
+
+    <hr />
+    <dl class="dl-horizontal" dir="rtl" style="width:50%">
+        <dt dir="rtl">
+            @Html.DisplayFor(model => model.Book_Name)
+
+        </dt>
+        
+        <dd>
+            @Html.DisplayNameFor(model => model.Book_Name)
+
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.Book_Author)
+
+        </dt>
+
+        <dd>
+            @Html.DisplayNameFor(model => model.Book_Author)
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.Publish_Date)
+
+        </dt>
+
+        <dd>
+            @Html.DisplayNameFor(model => model.Publish_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.Book_link)
+
+        </dt>
+
+        <dd>
+            @Html.DisplayNameFor(model => model.Book_link)
+
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.Book_Pic)
+
+        </dt>
+
+        <dd>
+            @Html.DisplayNameFor(model => model.Book_Pic)
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.Book_Details)
+
+        </dt>
+
+        <dd>
+            @Html.DisplayNameFor(model => model.Book_Details)
+
+        </dd>
+
+        <dt>
+نوع الكتاب
+        </dt>
+
+        <dd>
+            @Html.DisplayNameFor(model => model.Department.Dep_name)
+
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="text-align:center">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("عودة إلى القائمة", "AdminView")
+        </div>
+    }
+</div>
